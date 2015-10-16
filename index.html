@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <title>Bounds for Algebraic Geometric Codes and Secret Sharing Schemes</title>
+</head>
+<body>
+<script src="static/js/jquery-1.4.2.min.js"></script>
+<script src="static/MathJax/MathJax.js?config=TeX-AMS_HTML.js"></script>
+
+<script src="static/tables.js"></script>
+
+<div id="header">
+    <h1>Parameters for Algebraic Geometric Codes<br>and Secret Sharing Schemes</h1>
+</div>
+<div id="selection">
+    <div id="curves">
+        <h2>Curve</h2>
+        <ul>
+            <li><input type="radio" name="curve" value="suzuki8" checked='checked'> Suzuki over \(\mathbb{F}_8\)
+            <li><input type="radio" name="curve" value="suzuki32"> Suzuki over \(\mathbb{F}_{32}\)
+            <li><input type="radio" name="curve" value="hermitian16"> Hermitian over \(\mathbb{F}_{16}\)
+            <li><input type="radio" name="curve" value="hermitian64"> Hermitian over \(\mathbb{F}_{64}\)
+            <li><input type="radio" name="curve" value="klein8"> Klein over \(\mathbb{F}_8\)
+            <li><input type="radio" name="curve" value="gk64"> GK over \(\mathbb{F}_{64}\)
+            <li><input type="radio" name="curve" value="gk729"> GK over \(\mathbb{F}_{729}\)
+        </ul>
+    </div>
+
+    <div id="bounds">
+        <h2>Bounds</h2>
+        <ul>
+            <li><input type="radio" name="bound" value="C"> minimum weight of coset
+            <li><input type="radio" name="bound" value="D" checked="checked"> minimum distance of code
+            <li>Cosets <br> \( \mathcal{C}_L(D,D-C) \backslash \mathcal{C}_L(D,D-C-P)\)<br>
+                \(\mathcal{C}_\Omega(D,K+C) \backslash \mathcal{C}_\Omega(D,K+C+P) \)<br>
+                Codes <br> \( \mathcal{C}_L(D,D-C)\text{ or } \mathcal{C}_\Omega(D,K+C) \)<br>
+                Goppa Bound = \(\max\{0,\text{deg} C\} \)<br>
+                \[D = \sum_{R \text{ rational point}} R - P - Q\]
+        </ul>
+    </div>
+
+    <div id="obmethods">
+        <h2>Order Bound Methods</h2>
+        <ul>
+            <li><input type="checkbox" name="method" value="DK" checked="checked">Duursma-Kirov <a
+                    href="http://arxiv.org/abs/0901.2864">[ref]</a>
+            <li><input type="checkbox" name="method" value="DP">Duursma-Park <a href="http://arxiv.org/abs/0810.2789">[ref]</a>
+            <li><input type="checkbox" name="method" value="B">Beelen <a
+                    href="http://dx.doi.org/10.1016/j.ffa.2006.09.006">[ref]</a>
+        </ul>
+    </div>
+
+    <div id="fbmethods">
+        <h2>Floor Bound Methods</h2>
+        <ul>
+            <li><input type="checkbox" name="method" value="ABZ">ABZ <a href="http://arxiv.org/abs/0810.2789">[ref]</a>
+            <li><input type="checkbox" name="method" value="GST">Güneri-Stichtenoth-Taşkın <a
+                    href="http://dx.doi.org/10.1016/j.jpaa.2008.05.003">[ref]</a>
+            <li><input type="checkbox" name="method" value="LM">Lundell-McCullough <a
+                    href="http://arxiv.org/abs/math/0408341">[ref]</a>
+        </ul>
+    </div>
+
+    <div id="points">
+        <h2>Coset Point</h2>
+        <ul>
+            <li><input type="radio" name="point" value="P" checked> \(P\)
+            <li><input type="radio" name="point" value="Q"> \(Q\)
+        </ul>
+    </div>
+
+    <div id="C">
+        <h2>Degree and Q Value of C</h2>
+        <ul>
+            <li><span id="cmin">??</span>&le;<input id="degl" type="text" size="1" maxlength="3">\(&le;\text{deg C}&le;\)<input
+                    id="degh" type="text" size="1" maxlength="3">&le;<span id="cmax">??</span> <br>
+            <li><span id="cqmin">??</span>&le;<input id="ql" type="text" size="1" maxlength="3"> \(&le;C_q&le;\)<input
+                    id="qh" type="text" size="1" maxlength="3">&le;<span id="cqmax">??</span>
+        </ul>
+    </div>
+
+    <div id="hermitian16info" class="info">
+        <h2>Curve Info</h2>
+        <ul>
+            <li>Equation \( x^{5} = y^{4}+y \)
+            <li>Genus \( g = 6 \)
+            <li>Canonical Divisor \( K = 10P \sim 10Q \)
+            <li>Rational Points \( = 65 \)
+        </ul>
+    </div>
+    <div id="hermitian64info" class="info">
+        <h2>Curve Info</h2>
+        <ul>
+            <li>Equation \( x^{9}=y^8+y \)
+            <li>Genus \( g = 28 \)
+            <li>Canonical Divisor \( K = 54P \sim 54Q \)
+            <li>Rational Points \( = 513 \)
+        </ul>
+    </div>
+    <div id="suzuki8info" class="info">
+        <h2>Curve Info</h2>
+        <ul>
+            <li>Equation \( y^8 + y = x^2 (x^8+x) \)
+            <li>Genus \( g = 14 \)
+            <li>Canonical Divisor \( K = 26P \sim 26Q \)
+            <li>Rational Points \( = 65 \)
+        </ul>
+    </div>
+    <div id="suzuki32info" class="info">
+        <h2>Curve Info</h2>
+        <ul>
+            <li>Equation \( y^{32} + y = x^4 (x^{32}+x) \)
+            <li>Genus \( g = 124 \)
+            <li>Canonical Divisor \( K = 246P \sim 246Q \)
+            <li>Rational Points \( = 1025 \)
+        </ul>
+    </div>
+    <div id="klein8info" class="info">
+        <h2>Curve Info</h2>
+        <ul>
+            <li>Equation \( x^3y+y^3+x \)
+            <li>Genus \( g = 3 \)
+            <li>Canonical Divisor \( K = P + 3Q \)
+            <li>Rational Points \( = 24 \)
+            <li>Point \(P = \infty \)
+            <li>Point \(Q = (0,0) \)
+        </ul>
+    </div>
+    <div id="gk64info" class="info">
+        <h2>Curve Info</h2>
+        <ul>
+            <li>Equation \(x^{9}-y^8+y+(y^2+y)^3 \)
+            <li>Genus \( g = 10 \)
+            <li>Canonical Divisor \( K = 18P \)
+            <li>Rational Points \( = 221 \)
+        </ul>
+    </div>
+    <div id="gk729info" class="info">
+        <h2>Curve Info</h2>
+        <ul>
+            <li>Equation \(x^{28}-y^{27}+y+(y^3+y)^7 \)
+            <li>Genus \( g = 99 \)
+            <li>Canonical Divisor \( K = 196P \)
+            <li>Rational Points \( = 6058 \)
+        </ul>
+    </div>
+</div>
+
+<div id="tablecontainer">
+    <input type="submit" id="ajax" value="Get Table!"><br><br>
+
+    <div id="results">Select an appropriate range and hit the button.</div>
+</div>
+<div id="footer"> Last updated Oct'15. Created and maintained by Radoslav Kirov. Email: rkirov.at.gmail.dot.com<br>
+
+    <a href='http://code.google.com/appengine/' title='Google App Engine'>
+        <img style='border:none;' src="http://code.google.com/appengine/images/appengine-silver-120x30.gif"
+             alt="Powered by Google App Engine"/></a>
+
+    <a href="http://www.mathjax.org">
+        <img title="Powered by MathJax"
+             src="http://cdn.mathjax.org/mathjax/badge/badge.gif"
+             border="0" alt="Powered by MathJax"/>
+    </a>
+</div>
+
+<script type="text/javascript">
+var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+
+
+</script>
+<script type="text/javascript">
+try {
+var pageTracker = _gat._getTracker("UA-360383-2");
+pageTracker._trackPageview();
+} catch(err) {}
+
+</script>
+</body>
+</html>

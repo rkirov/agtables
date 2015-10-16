@@ -1,0 +1,119 @@
+body,html,h1,h2
+{   
+    padding: 0px;
+    margin: 0px;
+}
+
+#header
+{   
+    margin:0;
+    padding:0;
+    width:100%;
+    text-align:center;
+    background-color:#69c;
+    color:white;
+    border-bottom:1px solid black;
+}
+
+#header h1
+{
+    padding:20px;
+}
+
+#footer
+{   
+    margin:20px ;
+    font-size:10px;
+}
+
+#curves,#bounds,#obmethods,#fbmethods,#points,#C,.info
+{   
+    display: block;
+    float: left;
+    padding: 10px;
+}
+
+
+#tablecontainer{
+    text-align:center;
+    clear:both;
+}
+
+#selection 
+{
+    display: inline;    
+}
+
+#selection h2
+{   
+    background:#ddd;
+    text-align:center;
+    font-weight: bold;
+    padding:5px;
+    font-size:14px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+
+#selection ul
+{   
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    font-size: 12px;
+    padding: 0px;
+    margin: 6px 6px;
+    list-style: none;
+}
+
+#selection li
+{
+    margin:2px;
+}
+
+#resultstable
+{   
+    margin-left:auto; 
+    margin-right:auto;
+	font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+  	font-size: 12px;    padding: 0px;
+	text-align: left;    border-collapse: collapse;
+	border: 1px solid #69c;
+}
+
+#resultstable thead th
+{
+	padding: 7px 7px 7px 7px;
+	font-weight: normal;
+	font-size: 12px;
+	color: #039;
+	border-bottom: 1px solid #69c;
+}
+
+#resultstable tbody th
+{
+	padding: 7px 7px 7px 7px;
+	font-weight: normal;
+	font-size: 14px;
+	color: #039;
+	border-bottom: 1px none #69c;
+}
+#resultstable td 
+{   
+    padding: 7px 7px 7px 7px;
+	color: #669;
+	border-bottom: 1px none #69c;
+}
+#resultstable tbody tr:hover
+{
+	color: #339;
+	background: #d0dafd;
+}
+
+#resultstable #last
+{
+    border-bottom: 1px dashed #69c;
+}
+
+#resultstable #max
+{
+    color: red;
+}
